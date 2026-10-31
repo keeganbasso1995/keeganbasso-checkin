@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>On the Spot Self Check-In</title>
+<meta name="description" content="Two minutes. Ten questions. A quick, private self check-in by Keegan Basso.">
+<style>
+:root{--o:#FB8500;--od:#B85F00;--ink:#1d2430;--mut:#4a5568;--bg:#FFF8F0;--card:#fff;--line:#e3d6c6;
+--g:#1e8e3e;--gbg:#e6f6ea;--y:#b7791f;--ybg:#fff4d6;--r:#c62828;--rbg:#fde8e8}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:560px;margin:0 auto;padding:20px 18px 48px}
+header.top{border-top:8px solid var(--o);padding-top:14px;margin-bottom:6px}
+.by{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--od)}
+h1{font-size:30px;line-height:1.15;margin:6px 0 10px}
+h2{font-size:24px;line-height:1.2;margin:0 0 6px}
+p{margin:0 0 14px}
+.lead{font-size:20px;font-weight:600}
+.btn{display:block;width:100%;min-height:60px;border:0;border-radius:14px;background:var(--o);color:#1d2430;font-family:inherit;font-weight:700;font-size:20px;line-height:1.2;padding:16px;cursor:pointer;text-align:center}
+.btn:active{background:var(--od);color:#fff}
+.btn.sec{background:#fff;border:2px solid var(--ink);margin-top:12px}
+.btn:focus-visible,.opt:focus-visible{outline:4px solid var(--ink);outline-offset:2px}
+.prog{height:10px;background:#ecdfcf;border-radius:6px;overflow:hidden;margin:14px 0 6px}
+.prog>i{display:block;height:100%;background:var(--o);width:0;transition:width .2s}
+.count{font-size:15px;font-weight:700;color:var(--mut);margin-bottom:10px}
+.topic{font-size:15px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--od)}
+.q{font-size:24px;font-weight:700;line-height:1.25;margin:4px 0 16px}
+.opt{display:flex;gap:12px;align-items:center;width:100%;min-height:72px;text-align:left;background:var(--card);border:2px solid var(--line);border-left-width:12px;border-radius:14px;padding:12px 14px;margin-bottom:12px;font:inherit;color:var(--ink);cursor:pointer}
+.opt b{display:block;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.opt span{font-size:18px;font-weight:600}
+.opt.g{border-left-color:var(--g)}.opt.g b{color:var(--g)}
+.opt.y{border-left-color:#e0a100}.opt.y b{color:var(--y)}
+.opt.r{border-left-color:var(--r)}.opt.r b{color:var(--r)}
+.opt.sel{border-color:var(--ink);background:#fff3e0}
+.nav{display:flex;gap:12px;margin-top:6px}
+.nav .btn{margin:0}
+.back{background:#fff;border:2px solid var(--ink);flex:0 0 38%}
+.hide{display:none}
+.score{border-radius:18px;padding:20px;text-align:center;margin:10px 0 16px;border:3px solid}
+.score .n{font-size:64px;font-weight:800;line-height:1}
+.score .of{font-size:18px;font-weight:700}
+.score .band{font-size:26px;font-weight:800;margin-top:6px}
+.score.g{background:var(--gbg);border-color:var(--g);color:#14602a}
+.score.y{background:var(--ybg);border-color:#e0a100;color:#7a4f00}
+.score.r{background:var(--rbg);border-color:var(--r);color:#8e1b1b}
+.crisis{background:#fff;border:3px solid var(--r);border-radius:14px;padding:16px;margin:0 0 16px;font-weight:600}
+.crisis.big{background:var(--r);color:#fff;border-color:var(--r);font-size:21px;font-weight:700}
+.crisis.big a{color:#fff}
+.crisis a{color:var(--r);font-weight:800}
+.area{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.area h3{margin:0 0 2px;font-size:21px}
+.tag{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:6px;margin-bottom:8px}
+.tag.y{background:var(--ybg);color:#7a4f00}.tag.r{background:var(--rbg);color:#8e1b1b}
+.area ul{margin:8px 0 0;padding-left:22px}.area li{margin-bottom:6px}
+.note{font-style:italic;color:var(--mut)}
+.follow{background:#fff3e0;border:2px solid var(--o);border-radius:14px;padding:16px;margin:16px 0;font-weight:600}
+.follow a{color:var(--od);font-weight:800;text-decoration:underline}
+.disc{font-size:15px;color:var(--mut);margin-top:16px}
+.priv{font-size:15px;color:var(--mut);margin-top:14px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="by">Keegan Basso</div><h1>On the Spot Self Check-In</h1></header>
+
+<main>
+<section id="intro">
+  <p class="lead">Two minutes. Ten questions. Be honest, nobody sees this but you.</p>
+  <p>Pick the answer that fits <b>right now</b>, not the one you wish was true. Nothing is saved and nothing is sent anywhere. Close the page and it's gone.</p>
+  <button class="btn" id="start" type="button">Start</button>
+  <p class="priv">This is a peer-built self-check, not a diagnosis or medical treatment.</p>
+</section>
+
+<section id="quiz" class="hide" aria-live="polite">
+  <div class="prog" aria-hidden="true"><i id="bar"></i></div>
+  <div class="count" id="count"></div>
+  <div class="topic" id="topic"></div>
+  <div class="q" id="qtext"></div>
+  <div id="opts"></div>
+  <div class="nav">
+    <button class="btn back" id="back" type="button">Back</button>
+    <button class="btn" id="next" type="button" disabled style="opacity:.45">Next</button>
+  </div>
+</section>
+
+<section id="result" class="hide" aria-live="polite">
+  <div class="score" id="scorebox"><div class="n" id="scn"></div><div class="of">out of 100</div><div class="band" id="scband"></div></div>
+  <div id="crisisTop"></div>
+  <p class="note">A flag is information, not a verdict. It tells you where to look, that's all.</p>
+  <div id="areas"></div>
+  <div class="follow">Want to check in every day? Follow <a href="https://www.instagram.com/keegan.basso/" target="_blank" rel="noopener">@keegan.basso</a> on Instagram</div>
+  <div id="crisisBottom"></div>
+  <button class="btn sec" id="retake" type="button">Retake the check-in</button>
+  <p class="disc">This is a peer-built self-check, not a diagnosis or medical treatment.</p>
+</section>
+</main>
+</div>
+
+<script>
+(function(){
+var CRISIS="If you're in a dark place, call or text <a href=\"tel:988\">9-8-8</a>, Canada's Suicide Crisis Helpline. Free, any time. In immediate danger, call <a href=\"tel:911\">9-1-1</a>.";
+var Q=[
+{t:"Sleep",q:"How have I been sleeping this week?",
+ g:"Seven hours or close, waking rested",y:"Short or broken",r:"Barely sleeping, dragging",
+ tools:["Same wake-up time every day, even on days off.","Phone out of reach 30 minutes before bed.","Cooler, darker room. Hotel or camp: earplugs and a mask."]},
+{t:"Body",q:"How's my body holding up: energy, pain, tension?",
+ g:"Good energy, nothing nagging",y:"Tired or sore most days",r:"Run down, hurting, wound tight all the time",
+ tools:["Ten minutes of walking or stretching after shift.","Drop your shoulders and unclench your jaw. Do it now.","If the pain keeps hanging around, make the appointment."]},
+{t:"Fuel",q:"What am I running on: real food and water, or caffeine and whatever's closest?",
+ g:"Real meals and water most days",y:"Mixed. Some good, some junk",r:"Mostly caffeine and whatever's closest",
+ tools:["Pack one real meal the night before.","Water before the second coffee.","Keep a protein snack in the truck."]},
+{t:"Head",q:"How busy is my head right now: clear, distracted, or can't shut it off?",
+ g:"Mostly clear",y:"Distracted, hard to focus",r:"Can't shut it off, mind racing",
+ tools:["Dump it on paper: write down everything looping in your head, then close the notebook.","Slow breathing: in for 4, out for 6, five rounds. Works in the truck, too.","Pick one thing for the next hour and stick to it."]},
+{t:"Stress",q:"How much pressure am I carrying right now: work, money, home?",
+ g:"Manageable. I can handle what's on",y:"Heavy, but I'm still pushing through",r:"Crushing. It's too much",
+ tools:["Name the one biggest weight. Just one.","Write down the next small step on it, and do it this week.","Tell one person what you're carrying."]},
+{t:"Mood",q:"Overall, how have I been feeling: good, flat, or rough?",
+ g:"Good, mostly steady",y:"Flat, going through the motions",r:"Rough, low or short-fused",
+ tools:["Get outside for 15 minutes in daylight.","Name what you're feeling in one word. Naming it takes some of the weight.","Do one thing today you used to enjoy."]},
+{t:"Coping",q:"When it gets heavy, what do I reach for: something that helps, the scroll, or the drink?",
+ g:"Something that helps: a walk, a call, the gym",y:"The scroll, the TV, avoiding it",r:"The drink or something else to numb it",
+ tools:["Pick one swap: a walk, a call, or a workout instead of the usual.","Wait ten minutes before reaching. See if it passes.","Track it for a week: how much, how often. Seeing it on paper helps."]},
+{t:"People",q:"When did I last have a real conversation with someone who matters?",
+ g:"This week, and it was real",y:"A few weeks ago",r:"Can't remember. I've been on my own with it",
+ tools:["Text one person today: 'Hey, how are you actually doing?'","Call instead of texting. Even five minutes counts.","Pick a regular time: a coffee, a walk, a Sunday call."]},
+{t:"Self-talk",q:"How have I been talking to myself lately?",
+ g:"Fair. Like I'd talk to a good friend",y:"Hard on myself, a lot",r:"Brutal. Constant put-downs",
+ tools:["Catch it. Ask: would I say this to my best friend?","Swap one harsh line for a fair one.","Write down one thing you did right today."]},
+{t:"Purpose",q:"Do I have something I'm looking forward to?",
+ g:"Yes, and it's on the calendar",y:"Kinda. Nothing solid",r:"No. Nothing ahead",
+ tools:["Put one thing on the calendar this month. Small is fine.","Set one goal just for you, not for the job.","Plan something with somebody."]}
+];
+var ans=[],i=0;
+function $(id){return document.getElementById(id)}
+function show(id){["intro","quiz","result"].forEach(function(s){$(s).classList.toggle("hide",s!==id)});window.scrollTo(0,0)}
+function render(){
+  var q=Q[i];
+  $("bar").style.width=(i/Q.length*100)+"%";
+  $("count").textContent="Question "+(i+1)+" of "+Q.length;
+  $("topic").textContent=q.t;
+  $("qtext").textContent=q.q;
+  var h="";
+  [["g","Green"],["y","Yellow"],["r","Red"]].forEach(function(c){
+    h+='<button type="button" class="opt '+c[0]+(ans[i]===c[0]?' sel':'')+'" data-c="'+c[0]+'" aria-pressed="'+(ans[i]===c[0])+'"><div><b>'+c[1]+'</b><span>'+q[c[0]]+'</span></div></button>';
+  });
+  $("opts").innerHTML=h;
+  $("back").style.visibility=i===0?"hidden":"visible";
+  var n=$("next");n.disabled=!ans[i];n.style.opacity=ans[i]?1:.45;
+  n.textContent=i===Q.length-1?"See my result":"Next";
+}
+$("opts").addEventListener("click",function(e){
+  var b=e.target.closest(".opt");if(!b)return;
+  ans[i]=b.getAttribute("data-c");render();
+  if(i<Q.length-1){setTimeout(function(){i++;render()},220)}
+});
+$("next").addEventListener("click",function(){if(!ans[i])return;if(i<Q.length-1){i++;render()}else finish()});
+$("back").addEventListener("click",function(){if(i>0){i--;render()}});
+$("start").addEventListener("click",function(){i=0;ans=[];show("quiz");render()});
+$("retake").addEventListener("click",function(){i=0;ans=[];show("intro")});
+function finish(){
+  var pts={g:100,y:50,r:0},sum=0;
+  ans.forEach(function(a){sum+=pts[a]});
+  var score=Math.round(sum/Q.length);
+  var band=score>=80?"g":score>=50?"y":"r";
+  $("scn").textContent=score;
+  var box=$("scorebox");box.className="score "+band;
+  $("scband").textContent=band==="g"?"Green: Looking solid":band==="y"?"Yellow: Proceed with caution":"Red: Time to take care of yourself";
+  // weakest areas: reds first, then yellows, original order; max 2
+  var weak=[];
+  ["r","y"].forEach(function(c){Q.forEach(function(q,k){if(ans[k]===c)weak.push({q:q,c:c})})});
+  weak=weak.slice(0,2);
+  var h="";
+  if(weak.length){
+    h+="<h2>"+"Where to look first"+"</h2>";
+    weak.forEach(function(w){
+      h+='<div class="area"><span class="tag '+w.c+'">'+(w.c==="r"?"Red":"Yellow")+'</span><h3>'+w.q.t+'</h3><p style="margin:0">You said: '+w.q[w.c]+'.</p><ul>'+w.q.tools.map(function(t){return"<li>"+t+"</li>"}).join("")+'</ul></div>';
+    });
+  }else{
+    h+='<div class="area"><h3>All green</h3><p style="margin:0">Nothing flagged. Keep doing what you\'re doing, and check in again when things change.</p></div>';
+  }
+  $("areas").innerHTML=h;
+  if(band==="r"||ans[6]==="r"||ans[8]==="r"){$("crisisTop").innerHTML='<div class="crisis big">'+CRISIS+'</div>';$("crisisBottom").innerHTML=""}
+  else{$("crisisTop").innerHTML="";$("crisisBottom").innerHTML='<div class="crisis">'+CRISIS+'</div>'}
+  show("result");
+}
+})();
+</script>
+</body>
+</html>
