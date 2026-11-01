@@ -7,19 +7,25 @@
 <meta name="description" content="Two minutes. Ten questions. A quick, private self check-in by Keegan Basso.">
 <style>
 :root{--o:#FB8500;--od:#B85F00;--ink:#1d2430;--mut:#4a5568;--bg:#FFF8F0;--card:#fff;--line:#e3d6c6;
---g:#1e8e3e;--gbg:#e6f6ea;--y:#b7791f;--ybg:#fff4d6;--r:#c62828;--rbg:#fde8e8}
+--slate:#2b3441;--g:#1e8e3e;--gbg:#e6f6ea;--y:#b7791f;--ybg:#fff4d6;--r:#c62828;--rbg:#fde8e8}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-.wrap{max-width:560px;margin:0 auto;padding:20px 18px 48px}
-header.top{border-top:8px solid var(--o);padding-top:14px;margin-bottom:6px}
-.by{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--od)}
-h1{font-size:30px;line-height:1.15;margin:6px 0 10px}
+.wrap{max-width:560px;margin:0 auto;padding:22px 18px 48px}
+header.top{background:var(--slate);color:#fff;padding:14px 18px;text-align:center}
+header.top .in{max-width:560px;margin:0 auto}
+header.top .name{font-size:19px;font-weight:800;color:var(--o);line-height:1.2}
+header.top .sub{display:none;font-size:17px;color:#d5dbe3;margin-top:8px}
+header.top.hero{padding:38px 18px 32px;text-align:center}
+header.top.hero .name{font-size:42px;line-height:1.05;font-weight:800;letter-spacing:-.01em}
+header.top.hero .sub{display:block}
 h2{font-size:24px;line-height:1.2;margin:0 0 6px}
 p{margin:0 0 14px}
 .lead{font-size:20px;font-weight:600}
 .btn{display:block;width:100%;min-height:60px;border:0;border-radius:14px;background:var(--o);color:#1d2430;font-family:inherit;font-weight:700;font-size:20px;line-height:1.2;padding:16px;cursor:pointer;text-align:center}
 .btn:active{background:var(--od);color:#fff}
+.btn.big{min-height:76px;font-size:24px;border-radius:16px;margin-top:6px;box-shadow:0 4px 0 var(--od)}
+.btn.big:active{transform:translateY(2px);box-shadow:0 2px 0 var(--od)}
 .btn.sec{background:#fff;border:2px solid var(--ink);margin-top:12px}
 .btn:focus-visible,.opt:focus-visible{outline:4px solid var(--ink);outline-offset:2px}
 .prog{height:10px;background:#ecdfcf;border-radius:6px;overflow:hidden;margin:14px 0 6px}
@@ -53,24 +59,51 @@ p{margin:0 0 14px}
 .area h3{margin:0 0 2px;font-size:21px}
 .tag{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:6px;margin-bottom:8px}
 .tag.y{background:var(--ybg);color:#7a4f00}.tag.r{background:var(--rbg);color:#8e1b1b}
+.plan{background:#fff;border:3px solid var(--slate);border-radius:16px;padding:16px;margin:0 0 16px}
+.plan h2{font-size:22px;margin:0 0 6px}
+.plan p{margin:0 0 8px;font-weight:700}
+.plan ul{list-style:none;margin:0 0 8px;padding:0}
+.plan li{position:relative;padding-left:34px;margin-bottom:8px;line-height:1.35}
+.plan li:before{content:"";position:absolute;left:2px;top:2px;width:20px;height:20px;border:3px solid var(--slate);border-radius:5px;background:#fff}
+.plan .rest{margin:0;font-weight:500;color:var(--mut);font-size:16px}
 .area ul{margin:8px 0 0;padding-left:22px}.area li{margin-bottom:6px}
 .note{font-style:italic;color:var(--mut)}
 .follow{background:#fff3e0;border:2px solid var(--o);border-radius:14px;padding:16px;margin:16px 0;font-weight:600}
 .follow a{color:var(--od);font-weight:800;text-decoration:underline}
+.why{border-left:6px solid var(--o);background:#fff;border-radius:0 14px 14px 0;padding:14px 16px;margin:0 0 20px;font-size:20px;font-weight:600;line-height:1.4}
+.facts{display:flex;gap:10px;margin:0 0 24px;padding:0;list-style:none}
+.facts li{flex:1;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 6px;text-align:center;font-size:15px;font-weight:700;line-height:1.25}
+.facts svg{display:block;margin:0 auto 6px;width:30px;height:30px;stroke:var(--od);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.facts b{display:block;font-size:20px}
+footer.foot{border-top:2px solid var(--line);margin-top:30px;padding-top:16px;font-size:15px;color:var(--mut)}
+footer.foot a{color:var(--od);font-weight:800}
+footer.foot p{margin:0 0 8px}
+.tip{border-radius:14px;padding:14px 16px;margin:2px 0 14px;font-size:17px;line-height:1.4;border:2px solid}
+.tip.y{background:var(--ybg);border-color:#e0a100;color:#5c3d00}
+.tip.r{background:var(--rbg);border-color:var(--r);color:#6e1515}
+.tip b{display:block;font-size:13px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+.area.r{border-color:var(--r)}.area.y{border-color:#e0a100}
 .disc{font-size:15px;color:var(--mut);margin-top:16px}
 .priv{font-size:15px;color:var(--mut);margin-top:14px;text-align:center}
 </style>
 </head>
 <body>
+<header class="top hero" id="hdr"><div class="in"><div class="name">On the Spot Self Check-In</div><div class="sub">Built by a crane operator who's been there.</div></div></header>
 <div class="wrap">
-<header class="top"><div class="by">Keegan Basso</div><h1>On the Spot Self Check-In</h1></header>
-
 <main>
 <section id="intro">
-  <p class="lead">Two minutes. Ten questions. Be honest, nobody sees this but you.</p>
-  <p>Pick the answer that fits <b>right now</b>, not the one you wish was true. Nothing is saved and nothing is sent anywhere. Close the page and it's gone.</p>
-  <button class="btn" id="start" type="button">Start</button>
-  <p class="priv">This is a peer-built self-check, not a diagnosis or medical treatment.</p>
+  <p class="why">I spent years ignoring how I was doing. This is the check I wish I'd had on site.</p>
+  <ul class="facts">
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>2</b>minutes</li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg><b>10</b>questions</li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Private</b>nothing saved</li>
+  </ul>
+  <p>Pick the answer that fits <b>right now</b>, not the one you wish was true. Nobody sees this but you, and nothing is sent anywhere. Close the page and it's gone.</p>
+  <button class="btn big" id="start" type="button">Start</button>
+  <footer class="foot">
+    <p>Made by Keegan Basso. Follow <a href="https://www.instagram.com/keegan.basso/" target="_blank" rel="noopener">@keegan.basso</a> on Instagram.</p>
+    <p>This is a peer-built self-check, not a diagnosis or medical treatment.</p>
+  </footer>
 </section>
 
 <section id="quiz" class="hide" aria-live="polite">
@@ -79,6 +112,7 @@ p{margin:0 0 14px}
   <div class="topic" id="topic"></div>
   <div class="q" id="qtext"></div>
   <div id="opts"></div>
+  <div id="tip"></div>
   <div class="nav">
     <button class="btn back" id="back" type="button">Back</button>
     <button class="btn" id="next" type="button" disabled style="opacity:.45">Next</button>
@@ -88,9 +122,10 @@ p{margin:0 0 14px}
 <section id="result" class="hide" aria-live="polite">
   <div class="score" id="scorebox"><div class="n" id="scn"></div><div class="of">out of 100</div><div class="band" id="scband"></div></div>
   <div id="crisisTop"></div>
+  <div id="plan"></div>
   <p class="note">A flag is information, not a verdict. It tells you where to look, that's all.</p>
   <div id="areas"></div>
-  <div class="follow">Want to check in every day? Follow <a href="https://www.instagram.com/keegan.basso/" target="_blank" rel="noopener">@keegan.basso</a> on Instagram</div>
+  <div class="follow">Follow <a href="https://www.instagram.com/keegan.basso/" target="_blank" rel="noopener">Keegan.basso</a> for more mental health insights</div>
   <div id="crisisBottom"></div>
   <button class="btn sec" id="retake" type="button">Retake the check-in</button>
   <p class="disc">This is a peer-built self-check, not a diagnosis or medical treatment.</p>
@@ -104,38 +139,48 @@ var CRISIS="If you're in a dark place, call or text <a href=\"tel:988\">9-8-8</a
 var Q=[
 {t:"Sleep",q:"How have I been sleeping this week?",
  g:"Seven hours or close, waking rested",y:"Short or broken",r:"Barely sleeping, dragging",
- tools:["Same wake-up time every day, even on days off.","Phone out of reach 30 minutes before bed.","Cooler, darker room. Hotel or camp: earplugs and a mask."]},
+ ty:["Same wake-up time every day, even days off. Phone charges across the room, not in your hand.","Dim the screens 30 minutes before bed and let your head slow down."],
+ tr:["Camp or hotel: earplugs, a sleep mask or something to black out the window, and the phone out of reach.","No caffeine after noon this week, and get 10 minutes of daylight when you wake up. If it's been rough for weeks, talk to your doctor."]},
 {t:"Body",q:"How's my body holding up: energy, pain, tension?",
  g:"Good energy, nothing nagging",y:"Tired or sore most days",r:"Run down, hurting, wound tight all the time",
- tools:["Ten minutes of walking or stretching after shift.","Drop your shoulders and unclench your jaw. Do it now.","If the pain keeps hanging around, make the appointment."]},
+ ty:["Ten minutes of walking or stretching after shift: hips, shoulders, lower back.","Drop your shoulders and unclench your jaw. Do it right now."],
+ tr:["Pick one thing wearing you down and fix it this week: better boots, a stretch before you climb, a real day off.","If the pain's been hanging around, book the appointment. Don't wait for it to get worse."]},
 {t:"Fuel",q:"What am I running on: real food and water, or caffeine and whatever's closest?",
  g:"Real meals and water most days",y:"Mixed. Some good, some junk",r:"Mostly caffeine and whatever's closest",
- tools:["Pack one real meal the night before.","Water before the second coffee.","Keep a protein snack in the truck."]},
+ ty:["Pack one real meal the night before. Future you will thank you.","Water before the second coffee."],
+ tr:["Keep a protein snack and a full water jug in the truck so there's always a real option.","Cut it to one energy drink a day for a week and see how you feel."]},
 {t:"Head",q:"How busy is my head right now: clear, distracted, or can't shut it off?",
  g:"Mostly clear",y:"Distracted, hard to focus",r:"Can't shut it off, mind racing",
- tools:["Dump it on paper: write down everything looping in your head, then close the notebook.","Slow breathing: in for 4, out for 6, five rounds. Works in the truck, too.","Pick one thing for the next hour and stick to it."]},
+ ty:["Brain dump: write down everything looping in your head, then close the notebook.","Pick one thing for the next hour and stay on it."],
+ tr:["Box breathing: in 4, hold 4, out 4, hold 4. Five rounds. Works in the truck or at the lunch table.","Write it all down, then circle the one thing you can actually do something about today."]},
 {t:"Stress",q:"How much pressure am I carrying right now: work, money, home?",
  g:"Manageable. I can handle what's on",y:"Heavy, but I'm still pushing through",r:"Crushing. It's too much",
- tools:["Name the one biggest weight. Just one.","Write down the next small step on it, and do it this week.","Tell one person what you're carrying."]},
+ ty:["Name the one biggest weight. Just one. Then write the next small step on it and do it this week.","Take a real break at lunch: away from the phone, away from the crew chat."],
+ tr:["Tell one person what you're carrying: a buddy, your partner, anyone you trust.","Cross off what can wait. If money's the weight, call and ask about options before it piles up."]},
 {t:"Mood",q:"Overall, how have I been feeling: good, flat, or rough?",
  g:"Good, mostly steady",y:"Flat, going through the motions",r:"Rough, low or short-fused",
- tools:["Get outside for 15 minutes in daylight.","Name what you're feeling in one word. Naming it takes some of the weight.","Do one thing today you used to enjoy."]},
+ ty:["Get outside for 15 minutes in daylight, even at lunch.","Name how you feel in one word. Saying it takes some of the weight off."],
+ tr:["Text or call someone today, even for five minutes. Don't wait until you feel like it.","Do one small thing you used to enjoy, even if it feels pointless. If rough days keep stacking up, tell your doctor."]},
 {t:"Coping",q:"When it gets heavy, what do I reach for: something that helps, the scroll, or the drink?",
  g:"Something that helps: a walk, a call, the gym",y:"The scroll, the TV, avoiding it",r:"The drink or something else to numb it",
- tools:["Pick one swap: a walk, a call, or a workout instead of the usual.","Wait ten minutes before reaching. See if it passes.","Track it for a week: how much, how often. Seeing it on paper helps."]},
+ ty:["Pick one swap: a walk, a call or a workout instead of the scroll.","Wait ten minutes before reaching for it. See if it passes."],
+ tr:["Make it harder to grab: don't keep it in the truck or the room. Add a few steps between you and it.","Tell somebody you trust you've been leaning on it. Saying it out loud is the hardest part."]},
 {t:"People",q:"When did I last have a real conversation with someone who matters?",
  g:"This week, and it was real",y:"A few weeks ago",r:"Can't remember. I've been on my own with it",
- tools:["Text one person today: 'Hey, how are you actually doing?'","Call instead of texting. Even five minutes counts.","Pick a regular time: a coffee, a walk, a Sunday call."]},
+ ty:["Text one person today: \"Hey, how are you actually doing?\"","Pick a regular time: a coffee, a walk, a Sunday call."],
+ tr:["Call, don't text. Even five minutes with someone who knows you counts.","Tell one person the truth about how you've been, not the \"I'm good\" version."]},
 {t:"Self-talk",q:"How have I been talking to myself lately?",
  g:"Fair. Like I'd talk to a good friend",y:"Hard on myself, a lot",r:"Brutal. Constant put-downs",
- tools:["Catch it. Ask: would I say this to my best friend?","Swap one harsh line for a fair one.","Write down one thing you did right today."]},
+ ty:["Catch it and ask: would I say this to my best friend?","Swap one harsh line for a fair one."],
+ tr:["Write down the exact words you tell yourself. Then write what you'd say if a buddy said that about himself.","Tell someone you trust how hard you've been on yourself. If it's gotten dark, call or text <a href=\"tel:988\">9-8-8</a>."]},
 {t:"Purpose",q:"Do I have something I'm looking forward to?",
  g:"Yes, and it's on the calendar",y:"Kinda. Nothing solid",r:"No. Nothing ahead",
- tools:["Put one thing on the calendar this month. Small is fine.","Set one goal just for you, not for the job.","Plan something with somebody."]}
+ ty:["Put one thing on the calendar this month. Small is fine.","Set one goal just for you, not for the job."],
+ tr:["Make a plan with somebody this week: a fishing trip, a game, a project. Put a date on it.","Write down one thing that used to matter to you and take one small step toward it."]}
 ];
 var ans=[],i=0;
 function $(id){return document.getElementById(id)}
-function show(id){["intro","quiz","result"].forEach(function(s){$(s).classList.toggle("hide",s!==id)});window.scrollTo(0,0)}
+function show(id){var hd=$("hdr");hd.classList.toggle("hero",id==="intro");["intro","quiz","result"].forEach(function(s){$(s).classList.toggle("hide",s!==id)});window.scrollTo(0,0)}
 function render(){
   var q=Q[i];
   $("bar").style.width=(i/Q.length*100)+"%";
@@ -148,13 +193,15 @@ function render(){
   });
   $("opts").innerHTML=h;
   $("back").style.visibility=i===0?"hidden":"visible";
+  var tp=$("tip");
+  if(ans[i]==="y"||ans[i]==="r"){tp.innerHTML='<div class="tip '+ans[i]+'"><b>Quick tip</b>'+q[ans[i]==="y"?"ty":"tr"][0]+'</div>'}else{tp.innerHTML=""}
   var n=$("next");n.disabled=!ans[i];n.style.opacity=ans[i]?1:.45;
   n.textContent=i===Q.length-1?"See my result":"Next";
 }
 $("opts").addEventListener("click",function(e){
   var b=e.target.closest(".opt");if(!b)return;
   ans[i]=b.getAttribute("data-c");render();
-  if(i<Q.length-1){setTimeout(function(){i++;render()},220)}
+  if(ans[i]==="g"&&i<Q.length-1){setTimeout(function(){i++;render()},220)}
 });
 $("next").addEventListener("click",function(){if(!ans[i])return;if(i<Q.length-1){i++;render()}else finish()});
 $("back").addEventListener("click",function(){if(i>0){i--;render()}});
@@ -168,20 +215,29 @@ function finish(){
   $("scn").textContent=score;
   var box=$("scorebox");box.className="score "+band;
   $("scband").textContent=band==="g"?"Green: Looking solid":band==="y"?"Yellow: Proceed with caution":"Red: Time to take care of yourself";
-  // weakest areas: reds first, then yellows, original order; max 2
+  // every flagged area: reds first, then yellows, original order
   var weak=[];
   ["r","y"].forEach(function(c){Q.forEach(function(q,k){if(ans[k]===c)weak.push({q:q,c:c})})});
-  weak=weak.slice(0,2);
+  // Sleep always goes first when flagged, then everyone else reds first
+  weak.sort(function(a,b){return (b.q.t==="Sleep")-(a.q.t==="Sleep")});
   var h="";
   if(weak.length){
-    h+="<h2>"+"Where to look first"+"</h2>";
+    h+="<h2>Where to look</h2><p class=\"note\">"+weak.length+(weak.length===1?" area":" areas")+" flagged. Reds first. Pick one or two to start, not all of them.</p>";
     weak.forEach(function(w){
-      h+='<div class="area"><span class="tag '+w.c+'">'+(w.c==="r"?"Red":"Yellow")+'</span><h3>'+w.q.t+'</h3><p style="margin:0">You said: '+w.q[w.c]+'.</p><ul>'+w.q.tools.map(function(t){return"<li>"+t+"</li>"}).join("")+'</ul></div>';
+      var tl=w.q[w.c==="r"?"tr":"ty"];
+      h+='<div class="area '+w.c+'"><span class="tag '+w.c+'">'+(w.c==="r"?"Red":"Yellow")+'</span><h3>'+w.q.t+'</h3><p style="margin:0">You said: '+w.q[w.c]+'.</p><ul>'+tl.map(function(t){return"<li>"+t+"</li>"}).join("")+'</ul></div>';
     });
   }else{
-    h+='<div class="area"><h3>All green</h3><p style="margin:0">Nothing flagged. Keep doing what you\'re doing, and check in again when things change.</p></div>';
   }
   $("areas").innerHTML=h;
+  var pl;
+  if(weak.length){
+    var top=weak.slice(0,2);
+    pl='<div class="plan"><h2>Your action plan</h2><p>Start here this week:</p><ul>'+top.map(function(w){return"<li><b>"+w.q.t+":</b> "+w.q[w.c==="r"?"tr":"ty"][0]+"</li>"}).join("")+'</ul><p class="rest">Everything else is below when you\'re ready.</p></div>';
+  }else{
+    pl='<div class="plan"><h2>Your action plan</h2><p>Keep doing what you\'re doing. Nothing flagged.</p><p class="rest">Check in again when things change.</p></div>';
+  }
+  $("plan").innerHTML=pl;
   if(band==="r"||ans[6]==="r"||ans[8]==="r"){$("crisisTop").innerHTML='<div class="crisis big">'+CRISIS+'</div>';$("crisisBottom").innerHTML=""}
   else{$("crisisTop").innerHTML="";$("crisisBottom").innerHTML='<div class="crisis">'+CRISIS+'</div>'}
   show("result");
