@@ -81,6 +81,18 @@ footer.foot p{margin:0 0 8px}
 .tip{border-radius:14px;padding:14px 16px;margin:2px 0 14px;font-size:17px;line-height:1.4;border:2px solid}
 .tip.y{background:var(--ybg);border-color:#e0a100;color:#5c3d00}
 .tip.r{background:var(--rbg);border-color:var(--r);color:#6e1515}
+.tip.g{background:var(--gbg);border-color:var(--g);color:#14602a}
+.tip .alt{margin-top:8px}
+.tip .help{margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,.15)}
+.tip a,.area .help a{color:inherit;font-weight:800}
+.boxb{background:#fff;border:2px solid var(--o);border-radius:14px;padding:14px;margin:4px 0 6px;list-style:none}
+.boxb h4{margin:0 0 2px;font-size:19px}
+.boxb .sub{margin:0 0 10px;color:var(--mut);font-size:16px}
+.boxb .wrapb{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.boxb svg{flex:0 0 150px;width:150px;height:150px}
+.boxb ol{margin:0;padding-left:22px;flex:1 1 220px;font-size:17px}
+.boxb ol li{margin-bottom:6px}
+.area li.boxli{list-style:none;margin-left:-22px}
 .tip b{display:block;font-size:13px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
 .area.r{border-color:var(--r)}.area.y{border-color:#e0a100}
 .disc{font-size:15px;color:var(--mut);margin-top:16px}
@@ -137,47 +149,55 @@ footer.foot p{margin:0 0 8px}
 (function(){
 var CRISIS="If you're in a dark place, call or text <a href=\"tel:988\">9-8-8</a>, Canada's Suicide Crisis Helpline. Free, any time. In immediate danger, call <a href=\"tel:911\">9-1-1</a>.";
 var Q=[
-{t:"Sleep",q:"How have I been sleeping this week?",
+{t:"Sleep",gm:"Good sleep. That's the base everything else runs on.",q:"How have I been sleeping this week?",
  g:"Seven hours or close, waking rested",y:"Short or broken",r:"Barely sleeping, dragging",
  ty:["Same wake-up time every day, even days off. Phone charges across the room, not in your hand.","Dim the screens 30 minutes before bed and let your head slow down."],
  tr:["Camp or hotel: earplugs, a sleep mask or something to black out the window, and the phone out of reach.","No caffeine after noon this week, and get 10 minutes of daylight when you wake up. If it's been rough for weeks, talk to your doctor."]},
-{t:"Body",q:"How's my body holding up: energy, pain, tension?",
+{t:"Body",gm:"Good job. Your body's holding up, so whatever you're doing is working.",q:"How's my body holding up: energy, pain, tension?",
  g:"Good energy, nothing nagging",y:"Tired or sore most days",r:"Run down, hurting, wound tight all the time",
  ty:["Ten minutes of walking or stretching after shift: hips, shoulders, lower back.","Drop your shoulders and unclench your jaw. Do it right now."],
  tr:["Pick one thing wearing you down and fix it this week: better boots, a stretch before you climb, a real day off.","If the pain's been hanging around, book the appointment. Don't wait for it to get worse."]},
-{t:"Fuel",q:"What am I running on: real food and water, or caffeine and whatever's closest?",
+{t:"Fuel",gm:"Good fuel. Your head runs on it too.",q:"What am I running on: real food and water, or caffeine and whatever's closest?",
  g:"Real meals and water most days",y:"Mixed. Some good, some junk",r:"Mostly caffeine and whatever's closest",
  ty:["Pack one real meal the night before. Future you will thank you.","Water before the second coffee."],
  tr:["Keep a protein snack and a full water jug in the truck so there's always a real option.","Cut it to one energy drink a day for a week and see how you feel."]},
-{t:"Head",q:"How busy is my head right now: clear, distracted, or can't shut it off?",
+{t:"Head",gm:"Clear head. Worth noticing what's keeping it that way.",q:"How busy is my head right now: clear, distracted, or can't shut it off?",
  g:"Mostly clear",y:"Distracted, hard to focus",r:"Can't shut it off, mind racing",
- ty:["Brain dump: write down everything looping in your head, then close the notebook.","Box breathing: in 4, hold 4, out 4, hold 4. Five rounds. Works in the truck or at the lunch table."],
+ ty:["Brain dump: write down everything looping in your head, then close the notebook.","Not a writer? Take 5 to 10 minutes alone, no phone, and just notice what's going on around you and in your head.","@box"],qy:2,
  tr:["5-4-3-2-1 grounding: name 5 things you can see, 4 you can hear, 3 you can touch, 2 you can smell, 1 you can taste. Breathe slow the whole way through. It pulls you back into the moment.","Then write it all down and circle the one thing you can actually do something about today."]},
-{t:"Stress",q:"How much pressure am I carrying right now: work, money, home?",
+{t:"Stress",gm:"Good job. You're handling what's on your plate.",q:"How much pressure am I carrying right now: work, money, home?",
  g:"Manageable. I can handle what's going on",y:"Heavy, but I'm still pushing through",r:"Crushing. It's too much",
  ty:["Name the one biggest weight. Just one. Then write the next small step on it and do it this week.","Take a real break at lunch: away from the phone, away from the crew chat."],
- tr:["Tell one person what you're carrying: a buddy, your partner, anyone you trust.","Cross off what can wait. If money's the weight, call and ask about options before it piles up."]},
-{t:"Mood",q:"Overall, how have I been feeling: good, flat, or rough?",
+ tr:["Tell one person what you're carrying: a buddy, your partner, anyone you trust.","Cross off what can wait. If money's the weight, call and ask about options before it piles up."],
+ hr:"<b>Another place to call</b>ConnexOntario (Ontario): call <a href=\"tel:18665312600\">1-866-531-2600</a> or text CONNEX to <a href=\"sms:247247\">247247</a>. Free, confidential and anonymous, 24/7. They focus on mental health and can help with stress, anxiety, and pressure from home or money."},
+{t:"Mood",gm:"Steady is good. Keep doing what you're doing.",q:"Overall, how have I been feeling: good, flat, or rough?",
  g:"Good, mostly steady",y:"Flat, going through the motions",r:"Rough, low or short-fused",
  ty:["Get outside for 15 minutes in daylight, even at lunch.","Name how you feel in one word. Saying it takes some of the weight off."],
  tr:["Text or call someone today, even for five minutes. Don't wait until you feel like it.","Do one small thing you used to enjoy, even if it feels pointless. If rough days keep stacking up, tell your doctor."]},
-{t:"Coping",q:"When it gets heavy, what do I reach for: something that helps, the scroll, or the drink?",
+{t:"Coping",gm:"Good job. Reaching for something that helps is a real skill.",q:"When it gets heavy, what do I reach for: something that helps, the scroll, or the drink?",
  g:"Something that helps: a walk, a call, the gym",y:"The scroll, the TV, avoiding it",r:"The drink or something else to numb it",
  ty:["Pick one swap: a walk, a call or a workout instead of the scroll.","Wait ten minutes before reaching for it. See if it passes."],
  tr:["Make it harder to grab: don't keep it in the truck or the room. Add a few steps between you and it.","Tell somebody you trust you've been leaning on it. Saying it out loud is the hardest part."]},
-{t:"People",q:"When did I last have a real conversation with someone who matters?",
+{t:"People",gm:"Good job. Real conversations keep the tank full.",q:"When did I last have a real conversation with someone who matters?",
  g:"This week, and it was real",y:"A few weeks ago",r:"Can't remember. I've been on my own with it",
  ty:["Text one person today: \"Hey, how are you actually doing?\"","Pick a regular time: a coffee, a walk, a Sunday call."],
  tr:["Call, don't text. Even five minutes with someone who knows you counts.","Tell one person the truth about how you've been, not the \"I'm good\" version."]},
-{t:"Self-talk",q:"How have I been talking to myself lately?",
+{t:"Self-talk",gm:"Good job. Talking to yourself like a friend is harder than it sounds.",q:"How have I been talking to myself lately?",
  g:"Fair. Like I'd talk to a good friend",y:"Hard on myself, a lot",r:"Brutal. Constant put-downs",
  ty:["Catch it and ask: would I say this to my best friend?","Swap one harsh line for a fair one."],
  tr:["Write down the exact words you tell yourself. Then write what you'd say if a buddy said that about himself.","Tell someone you trust how hard you've been on yourself. If it's gotten dark, call or text <a href=\"tel:988\">9-8-8</a>."]},
-{t:"Purpose",q:"Do I have something I'm looking forward to?",
+{t:"Purpose",gm:"Good. Having something ahead makes the hard days easier.",q:"Do I have something I'm looking forward to?",
  g:"Yes, and it's on the calendar",y:"Kinda. Nothing solid",r:"No. Nothing ahead",
  ty:["Put one thing on the calendar this month. Small is fine. No rain checks, follow through.","Set one goal just for you, not for the job."],
  tr:["Make a plan with somebody this week: a fishing trip, a game, a project. Put a date on it. No rain checks, follow through.","Write down one thing that used to matter to you and take one small step toward it."]}
 ];
+var BOX='<div class="boxb"><h4>Box breathing</h4><p class="sub">Slows your body down so your head can follow. Works in the truck or at the lunch table.</p><div class="wrapb">'+
+'<svg viewBox="0 0 150 150" role="img" aria-label="A square: breathe in 4, hold 4, breathe out 4, hold 4"><rect x="30" y="30" width="90" height="90" rx="6" fill="#fff3e0" stroke="#FB8500" stroke-width="5"/>'+
+'<g font-family="inherit" font-weight="800" text-anchor="middle" fill="#1d2430"><text x="75" y="22" font-size="13">IN 4</text><text x="75" y="141" font-size="13">OUT 4</text>'+
+'<text x="138" y="79" font-size="13" transform="rotate(90 138 75)">HOLD 4</text><text x="12" y="79" font-size="13" transform="rotate(-90 12 75)">HOLD 4</text>'+
+'<text x="75" y="84" font-size="26" fill="#B85F00">4</text></g><g fill="#B85F00"><path d="M108 24l8 6-8 6z"/><path d="M126 108l-6 8-6-8z"/><path d="M42 126l-8-6 8-6z"/><path d="M24 42l6-8 6 8z"/></g></svg>'+
+'<ol><li><b>Inhale:</b> breathe in slowly for 4 seconds through your nose.</li><li><b>Hold:</b> keep your lungs full for 4 seconds.</li><li><b>Exhale:</b> release the air slowly for 4 seconds through your nose or mouth.</li><li><b>Hold:</b> keep your lungs empty for 4 seconds.</li><li><b>Repeat</b> as many times as you need, whenever you need it.</li></ol></div></div>';
+function tipLi(t){return t==="@box"?'<li class="boxli">'+BOX+'</li>':"<li>"+t+"</li>"}
 var ans=[],i=0;
 function $(id){return document.getElementById(id)}
 function show(id){var hd=$("hdr");hd.classList.toggle("hero",id==="intro");["intro","quiz","result"].forEach(function(s){$(s).classList.toggle("hide",s!==id)});window.scrollTo(0,0)}
@@ -194,14 +214,15 @@ function render(){
   $("opts").innerHTML=h;
   $("back").style.visibility=i===0?"hidden":"visible";
   var tp=$("tip");
-  if(ans[i]==="y"||ans[i]==="r"){tp.innerHTML='<div class="tip '+ans[i]+'"><b>Quick tip</b>'+q[ans[i]==="y"?"ty":"tr"][0]+'</div>'}else{tp.innerHTML=""}
+  if(ans[i]==="g"){tp.innerHTML='<div class="tip g"><b>Nice work</b>'+q.gm+'</div>'}
+  else if(ans[i]==="y"||ans[i]==="r"){var tl=q[ans[i]==="y"?"ty":"tr"],k=ans[i]==="y"&&q.qy?q.qy:1,th=tl[0];for(var j=1;j<k;j++)th+='<div class="alt">'+tl[j]+'</div>';if(ans[i]==="r"&&q.hr)th+='<div class="help">'+q.hr+'</div>';tp.innerHTML='<div class="tip '+ans[i]+'"><b>Quick tip</b>'+th+'</div>'}
+  else{tp.innerHTML=""}
   var n=$("next");n.disabled=!ans[i];n.style.opacity=ans[i]?1:.45;
   n.textContent=i===Q.length-1?"See my result":"Next";
 }
 $("opts").addEventListener("click",function(e){
   var b=e.target.closest(".opt");if(!b)return;
   ans[i]=b.getAttribute("data-c");render();
-  if(ans[i]==="g"&&i<Q.length-1){setTimeout(function(){i++;render()},220)}
 });
 $("next").addEventListener("click",function(){if(!ans[i])return;if(i<Q.length-1){i++;render()}else finish()});
 $("back").addEventListener("click",function(){if(i>0){i--;render()}});
@@ -225,7 +246,7 @@ function finish(){
     h+="<h2>Where to look</h2><p class=\"note\">"+weak.length+(weak.length===1?" area":" areas")+" flagged. Reds first. Pick one or two to start, not all of them.</p>";
     weak.forEach(function(w){
       var tl=w.q[w.c==="r"?"tr":"ty"];
-      h+='<div class="area '+w.c+'"><span class="tag '+w.c+'">'+(w.c==="r"?"Red":"Yellow")+'</span><h3>'+w.q.t+'</h3><p style="margin:0">You said: '+w.q[w.c]+'.</p><ul>'+tl.map(function(t){return"<li>"+t+"</li>"}).join("")+'</ul></div>';
+      h+='<div class="area '+w.c+'"><span class="tag '+w.c+'">'+(w.c==="r"?"Red":"Yellow")+'</span><h3>'+w.q.t+'</h3><p style="margin:0">You said: '+w.q[w.c]+'.</p><ul>'+tl.map(tipLi).join("")+'</ul>'+(w.c==="r"&&w.q.hr?'<div class="tip r help" style="margin:8px 0 0">'+w.q.hr+'</div>':'')+'</div>';
     });
   }else{
   }
